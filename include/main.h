@@ -2,13 +2,12 @@
 #define MAIN_H
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <ncurses.h>
 #include <math.h>
 #include <string.h>
-#include <ao/ao.h>
 #include <time.h>
-#include <errno.h>
-#include <pthread.h>  
+#include <errno.h>  
 
 #define SIDELEN 4
 #define GAME_WIN_SCORES 8192
@@ -38,8 +37,6 @@ struct {
     point pnt;
     struct linked_list_points * next;
 } typedef linked_list_points;
-
-void * play_pluck_th(void *);
 
 void free_moves();
 linked_list * get_all_points(int [SIDELEN][SIDELEN], char);

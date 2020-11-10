@@ -336,14 +336,10 @@ void init_color_pairs()
 
 int main()
 {	
-    pthread_t thread_id;
-
 	initscr();
 	start_color();
 
     srand(time(NULL));
-    
-	ao_initialize();
 
     init_color_pairs();
 
@@ -372,7 +368,6 @@ int main()
             ch = getch();
 
             if(ch == 'y' || ch == 'Y') {
-                ao_shutdown();
                 endwin(); 
                 return 0;   
             }
@@ -400,7 +395,6 @@ int main()
                 break;
         }
 
-        pthread_create(&thread_id, NULL, play_pluck_th, NULL);
         make_movement(point_list, ch);
         print_scores();
 
@@ -413,7 +407,6 @@ int main()
                     fill_with_points_times(2);
                     break;
                 } else if(ch == 'q' || ch == 'Q') {
-                    ao_shutdown();
                     endwin(); 
                     return 0;
                 }
@@ -434,7 +427,6 @@ int main()
                         fill_with_points_times(2);
                         break;
                     } else if(ch == 'q' || ch == 'Q') {
-                        ao_shutdown();
                         endwin(); 
                         return 0;
                     }
@@ -447,7 +439,6 @@ int main()
         
     }
 
-	ao_shutdown();
     endwin(); 
 	return 0;
 }
