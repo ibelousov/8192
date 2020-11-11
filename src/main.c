@@ -334,12 +334,19 @@ void init_color_pairs()
     init_pair(16, COLOR_CYAN, COLOR_WHITE);
 }
 
-int main()
-{	
-	initscr();
-	start_color();
+void print_background(int color)
+{
+    char * line = malloc(COLS + 1);
+    for(int i = 0; i < COLS; i++) {
+        line[i] = ' ';
+    }
+    for(int i = 0; i < LINES; i++)
+        mvprintw(i, 0, "%s", line);
+}
 
-    srand(time(NULL));
+void start()
+{
+	start_color();
 
     init_color_pairs();
 
@@ -347,6 +354,14 @@ int main()
     raw();
     keypad(stdscr, TRUE);
     noecho();
+    refresh();
+}
+
+int main()
+{	
+    srand(time(NULL));
+    initscr();
+	start();
 
     linked_list * point_list;
 
@@ -393,6 +408,12 @@ int main()
                 ch = 'd';
                 point_list = get_all_points(FIELD, 'd');
                 break;
+            default: 
+                print_background(15);
+                print_field();
+                print_scores();
+                refresh();
+                continue;
         }
 
         make_movement(point_list, ch);
