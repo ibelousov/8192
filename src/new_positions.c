@@ -101,6 +101,7 @@ void free_moves()
 
 linked_list * get_all_points(int ARR[SIDELEN][SIDELEN], char movement)
 {
+    free_moves();
     moves = NULL;
 
     for(int i = 0; i < SIDELEN; i++)

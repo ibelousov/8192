@@ -383,6 +383,7 @@ int main()
             ch = getch();
 
             if(ch == 'y' || ch == 'Y') {
+                free_moves();
                 endwin(); 
                 return 0;   
             }
@@ -420,7 +421,7 @@ int main()
         print_scores();
 
         if(is_game_win()) {
-            print_game_win();   
+            print_game_win();
             while((ch = getch())) {
                 if(ch == 'n' || ch == 'N') {
                     print_empty_field();
@@ -448,13 +449,13 @@ int main()
                         fill_with_points_times(2);
                         break;
                     } else if(ch == 'q' || ch == 'Q') {
+                        free_moves();
                         endwin(); 
                         return 0;
                     }
                 }
 
             }
-            free_moves();
             print_field();
         }
         
