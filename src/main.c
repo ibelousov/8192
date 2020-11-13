@@ -409,11 +409,12 @@ int main()
                 ch = 'd';
                 point_list = get_all_points(FIELD, 'd');
                 break;
-            default: 
+            case KEY_RESIZE:
                 print_background(15);
                 print_field();
                 print_scores();
                 refresh();
+            default: 
                 continue;
         }
 
