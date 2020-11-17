@@ -422,10 +422,13 @@ int main()
         print_scores();
 
         if(is_game_win()) {
+            free_moves();
             print_game_win();
             while((ch = getch())) {
                 if(ch == 'n' || ch == 'N') {
+                    scores = 0;
                     print_empty_field();
+                    print_scores();
                     clear_field();
                     fill_with_points_times(2);
                     break;
@@ -440,12 +443,15 @@ int main()
             fill_with_points();
 
             if(check_game_over(&point_list)) {
+                free_moves();
                 print_field();
                 print_game_over();
                 while((ch = getch())) {
                     
                     if(ch == 'n' || ch == 'N') {
+                        scores = 0;
                         print_empty_field();
+                        print_scores();
                         clear_field();
                         fill_with_points_times(2);
                         break;

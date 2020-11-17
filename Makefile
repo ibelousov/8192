@@ -14,5 +14,5 @@ mem:
 	cc src/new_positions.c src/main.c -o build/$(P) $(CFLAGS) $(LDLIBS) 
 	valgrind --leak-check=yes ./build/$(P)
 
-test-positions:
+test-positions: am
 	@$(MAKE) -C tests positions
